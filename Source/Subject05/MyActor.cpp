@@ -53,7 +53,7 @@ void AMyActor::Move()
 
 		CurrentX += StepX;
 		CurrentY += StepY;
-		
+
 		float DX = static_cast<float>(CurrentX - PrevX);
 		float DY = static_cast<float>(CurrentY - PrevY);
 
@@ -64,6 +64,9 @@ void AMyActor::Move()
 		if (bEvent)
 		{
 			TotalEvents++;
+
+			FVector NewWorldLocation = FVector(CurrentX * 100.0f, CurrentY * 100.0f, GetActorLocation().Z);
+			SetActorLocation(NewWorldLocation);
 		}
 
 		UE_LOG(LogTemp, Log, TEXT("Step %d : (%d, %d), Distance = %.2f, Event = %s"),
